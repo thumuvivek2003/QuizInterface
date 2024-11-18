@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Quiz Interface</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<style>
+    body{
+        overflow:hidden;
+    }
+    .option {
+    padding: 5px;
+    height: 150px;
+    }
+</style>
+<body>
+
+
+    <div class="container text-center mt-5">
+        <div class="question-box">
+            <div class="question">
+                <div class="outer">
+      <div class="dot"></div>
+      <div class="card">
+        <div class="ray"></div>
+        <div class="text">సంతోషపూర్వకంగా దానం చేసేవాడిని దేవుడు ఎందుకు ప్రేమిస్తాడు?</div>
+      </div>
+    </div>            </div>
+        </div>
+        
+        <div class="row mt-5">
+           
+                    <div class="col-md-6">
+                        <div class="option" data-iscorrect="" id="option4">
+                            <div class="outer">
+      <div class="dot"></div>
+      <div class="card">
+        <div class="ray"></div>
+        <div class="text">అతను భయపడతాడు</div>
+      </div>
+    </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="option" data-iscorrect="" id="option3">
+                            <div class="outer">
+      <div class="dot"></div>
+      <div class="card">
+        <div class="ray"></div>
+        <div class="text">అతను కోపంగా ఉండకుండా ఉండే కారణంగా</div>
+      </div>
+    </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="option" data-iscorrect="1" id="option1">
+                            <div class="outer">
+      <div class="dot"></div>
+      <div class="card">
+        <div class="ray"></div>
+        <div class="text">అతను చిత్తశుద్ధి కలిగి ఉన్నాడు</div>
+      </div>
+    </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="option" data-iscorrect="" id="option2">
+                            <div class="outer">
+      <div class="dot"></div>
+      <div class="card">
+        <div class="ray"></div>
+        <div class="text">అతను ధనవంతుడు కావడం వలన</div>
+      </div>
+    </div>
+                        </div>
+                    </div>    </div>
+      <audio controls autoplay style='display:none'>
+
+              <source src="bg.mp3" type="audio/ogg">
+
+            </audio>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            
+           $(document).on("click", ".option", function () {
+                var isCorrect = $(this).data('iscorrect');
+                if (isCorrect) {
+                    $(this).css('border-color', 'green');
+                    // setTimeout(function () {
+                    window.location.href = 'correct.php';
+                    // }, 0);
+                } else {
+                    $(this).css('border-color', 'red');
+                     $("body").addClass("wrong");
+                    $(".option").each(function () {
+                        var isOptionCorrect = $(this).data('iscorrect');
+                        if (isOptionCorrect) {
+                            $(this).css('border-color', 'green');
+                        }
+                          setTimeout(function () {
+                            window.location.href = 'wrong.php';
+                        }, 200);
+                    });
+                }
+            });
+
+        })
+    </script>
+</body>
+</html>

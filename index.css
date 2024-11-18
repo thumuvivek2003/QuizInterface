@@ -1,0 +1,242 @@
+
+
+.noto-sans-telugu {
+  font-family: "Noto Sans Telugu", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+
+   body {
+    width:100%;
+    height:100vh;
+    font-family: "Noto Sans Telugu", sans-serif;
+  font-optical-sizing: auto;
+  font-weight:200;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+    overflow:hidden;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('background.jpg') no-repeat center center fixed;
+     background: linear-gradient(135deg, #3f51b5, #ff4081);
+    background-size: cover;
+    z-index: -1; /* Put the background behind other content */
+    transition: filter 3s ease; /* Smooth transition for the grayscale effect */
+}
+
+body.wrong::before {
+    filter: grayscale(100%); /* Apply grayscale when wrong */
+    
+}
+
+
+.question-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+    width:100%;
+    border: 3px solid white;
+    border-radius: 50px;
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+}
+
+.question {
+    font-size: 1.5rem;
+    text-align: center;
+    white-space: nowrap;
+    width:100%;
+    height:100%;
+}
+
+.option {
+    padding: 5px;
+    border: 2px solid white;
+    border-radius: 8px;
+    margin: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    height: 150px;
+}
+
+.option:hover {
+    transform: scale(1.05);
+    border-color: #ffeb3b;
+}
+
+.option:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: white;
+    animation: rotate-line 2s linear infinite;
+}
+
+@keyframes rotate-line {
+    0% {
+        transform: translateX(-100%);
+    }
+    50%{
+        transform: translateX(50%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+
+
+/*Styles for Black*/
+.outer {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  padding: 1px;
+  background: radial-gradient(circle 230px at 0% 0%, #ffffff, #0c0d0d);
+  position: relative;
+}
+
+.dot {
+  width: 5px;
+  aspect-ratio: 1;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0 0 10px #ffffff;
+  border-radius: 100px;
+  z-index: 2;
+  right: 10%;
+  top: 10%;
+  animation: moveDot 6s linear infinite;
+}
+
+@keyframes moveDot {
+  0%,
+  100% {
+    top: 0%;
+    right: 0%;
+  }
+  25% {
+    top: 0%;
+    right:100%;
+  }
+  50% {
+    top: 100%;
+    right: 100%;
+  }
+  75% {
+    top: 100%;
+    right: 0%;
+  }
+}
+
+.card {
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border-radius: 9px;
+  border: solid 1px #202222;
+  background-size: 20px 20px;
+  background: radial-gradient(circle 280px at 0% 0%, #444444, #0c0d0d);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-direction: column;
+  color: #fff;
+  background: linear-gradient(201deg, #3f51b5, #ff4081);
+}
+.ray {
+  width: 180px;
+  height: 45px;
+  border-radius: 100px;
+  position: absolute;
+  background-color: #c7c7c7;
+  opacity: 0.4;
+  box-shadow: 0 0 50px #fff;
+  filter: blur(10px);
+  transform-origin: 10%;
+  top: 0%;
+  left: 0;
+  transform: rotate(40deg);
+animation: moveDot 6s linear infinite;
+}
+
+.question .ray {
+  width: 800px;
+  height: 500px;
+  border-radius: 100px;
+  position: absolute;
+  background-color:white;
+  opacity: 0.4;
+  box-shadow: 0 0 50px #fff;
+  filter: blur(3px);
+  transform-origin: 10%;
+  top: 0%;
+  left: 0;
+  animation:none;
+  transform: rotate(40deg);
+  color:white;
+/*animation: moveDot 6s linear infinite;*/
+}
+
+.card .text {
+    font-weight: bolder;
+    font-size: 2rem;
+    background: linear-gradient(45deg, #000000 4%, #fff, #000);
+    background-clip: text;
+    /* color: transparent; */
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  position: absolute;
+  background-color: #2c2c2c;
+}
+.topl {
+  top: 10%;
+  background: linear-gradient(90deg, #888888 30%, #1d1f1f 70%);
+}
+.bottoml {
+  bottom: 10%;
+}
+.leftl {
+  left: 10%;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(180deg, #747474 30%, #222424 70%);
+}
+.rightl {
+  right: 10%;
+  width: 1px;
+  height: 100%;
+}
+
+
+.question-box .text {
+/*.text {*/
+    font-size: 35px;
+    /*background: black;*/
+    color: white;
+    padding: 35px;
+    border-radius: 6px;
+}
+
