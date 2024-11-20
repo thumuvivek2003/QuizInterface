@@ -110,7 +110,7 @@
     </div>
                         </div>
                     </div>    </div>
-       <audio id="bgAudio" autoplay loop muted>
+      <audio id="bgAudio" autoplay loop>
     <source src="https://github.com/thumuvivek2003/QuizInterface/raw/refs/heads/main/bg.mp3" type="audio/ogg">
     Your browser does not support the audio element.
 </audio>
@@ -119,48 +119,31 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
-      <script>
+     <script>
     const audio = document.getElementById('bgAudio');
     const muteButton = document.getElementById('muteButton');
 
-    // Unmute and play audio when location.href is triggered
-    function navigateTo(url) {
-        audio.muted = false; // Unmute the audio
-        audio.play().then(() => {
-            window.location.href = url; // Navigate after ensuring audio playback starts
-        }).catch(err => {
-            console.error('Autoplay failed:', err);
-            window.location.href = url; // Proceed with navigation even if autoplay fails
-        });
-    }
+    // Initialize audio as muted for autoplay compliance
+    audio.muted = true;
 
-    // Handle mute/unmute toggle
+    // Add a click listener to unmute and play the audio
     muteButton.addEventListener('click', () => {
         if (audio.muted) {
             audio.muted = false;
             muteButton.textContent = '🔊'; // Change icon to unmute
-            audio.play().catch(err => console.error('Playback failed:', err));
         } else {
             audio.muted = true;
             muteButton.textContent = '🔇'; // Change icon to mute
         }
+        audio.play(); // Ensure playback starts when unmuted
     });
 
-    // Attempt to autoplay muted audio on reload
+    // Attempt to autoplay muted audio (compliant with browser policies)
     document.addEventListener('DOMContentLoaded', () => {
-        audio.play().catch(err => {
+        audio.muted = true; // Keep muted by default
+        audio.play().catch(error => {
             console.log('Autoplay was prevented. User interaction is needed.');
         });
-    });
-
-    // Example of triggering navigation with audio unmuted
-    document.querySelector('.option').addEventListener('click', function () {
-        const isCorrect = this.dataset.iscorrect;
-        if (isCorrect) {
-            navigateTo('correct.html');
-        } else {
-            navigateTo('wrong.html');
-        }
     });
 </script>
         
